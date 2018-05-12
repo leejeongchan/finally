@@ -37,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tab02");
-        tabSpec.setIndicator("THREE",null);
+        tabSpec.setIndicator("사랑방",null);
         tabSpec.setContent(R.id.tab2);
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tab03");
-        tabSpec.setIndicator("FOUR",null);
+        tabSpec.setIndicator("게시판",null);
         tabSpec.setContent(R.id.tab3);
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tab04");
-        tabSpec.setIndicator("더보기",null);
+        tabSpec.setIndicator("MyPage",null);
         tabSpec.setContent(R.id.tab4);
         tabHost.addTab(tabSpec);
     }

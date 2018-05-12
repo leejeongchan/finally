@@ -21,13 +21,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myLayout=(LinearLayout)findViewById(R.id.myLayout);
-        animationDrawable=(AnimationDrawable)myLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(4500);
-        animationDrawable.setExitFadeDuration(4500);
-        animationDrawable.start();
-
-
         TabHost tabHost = (TabHost)findViewById(R.id.host);
         tabHost.setup();
 
@@ -37,17 +30,17 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tab02");
-        tabSpec.setIndicator("사랑방",null);
+        tabSpec.setIndicator("THREE",null);
         tabSpec.setContent(R.id.tab2);
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tab03");
-        tabSpec.setIndicator("게시판",null);
+        tabSpec.setIndicator("FOUR",null);
         tabSpec.setContent(R.id.tab3);
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tab04");
-        tabSpec.setIndicator("MyPage",null);
+        tabSpec.setIndicator("더보기",null);
         tabSpec.setContent(R.id.tab4);
         tabHost.addTab(tabSpec);
     }

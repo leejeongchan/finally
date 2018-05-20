@@ -1,48 +1,58 @@
 package com.example.yun.togethertogether;
 
-import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TabHost;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
 
-public class MainActivity extends AppCompatActivity {
-    LinearLayout myLayout;
-    AnimationDrawable animationDrawable;
+
+public class MainActivity extends FragmentActivity {
+    FragmentTabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         setTitle(" TOTO");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabHost tabHost = (TabHost)findViewById(R.id.host);
-        tabHost.setup();
 
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("tab01");
-        tabSpec.setIndicator("HOME",null);
-        tabSpec.setContent(R.id.tab1);
-        tabHost.addTab(tabSpec);
+        tabHost = (FragmentTabHost)findViewById(R.id.tabhost);
+        tabHost.setup(this,getSupportFragmentManager(),R.id.fragment_container);
+        tabHost.addTab(tabHost.newTabSpec("tab01").setIndicator("Home"),FragmentHome.class,null);
+        tabHost.addTab(tabHost.newTabSpec("tab02").setIndicator("Chat"),FragmentChat.class,null);
+        tabHost.addTab(tabHost.newTabSpec("tab03").setIndicator("Mypage"),FragmentPost.class,null);
+        tabHost.addTab(tabHost.newTabSpec("tab04").setIndicator("more"),FragmentMore.class,null);
+        /*if(findViewById(R.id.fragment_container)!=null)
+        {
+            if(savedInstanceState!=null)
+            {
+                return ;
 
-        tabSpec = tabHost.newTabSpec("tab02");
-        tabSpec.setIndicator("THREE",null);
-        tabSpec.setContent(R.id.tab2);
-        tabHost.addTab(tabSpec);
+            }
+            FragmentHome firstFragment=new FragmentHome();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,firstFragment).commit();
+        }*/
 
-        tabSpec = tabHost.newTabSpec("tab03");
-        tabSpec.setIndicator("FOUR",null);
-        tabSpec.setContent(R.id.tab3);
-        tabHost.addTab(tabSpec);
 
-        tabSpec = tabHost.newTabSpec("tab04");
-        tabSpec.setIndicator("더보기",null);
-        tabSpec.setContent(R.id.tab4);
-        tabHost.addTab(tabSpec);
+
+
+
+
+
+
+
+
     }
 
+
+
+
+
+
+
 }
+
+
+
+

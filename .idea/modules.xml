@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\JungJaeho\TogetherTogether-master\TogetherTogether-master\TogetherTogether.iml" filepath="D:\JungJaeho\TogetherTogether-master\TogetherTogether-master\TogetherTogether.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TogetherTogether-master.iml" filepath="$PROJECT_DIR$/TogetherTogether-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TogetherTogether.iml" filepath="$PROJECT_DIR$/TogetherTogether.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

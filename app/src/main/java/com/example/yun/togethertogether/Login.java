@@ -11,7 +11,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
+//test
 
 public class Login extends Login_db {
     EditText idText;

@@ -3,6 +3,7 @@ package com.example.yun.togethertogether;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,11 +54,12 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
         list1 = (ListView) view.findViewById(R.id.list);
-        listItems=new ArrayList<>();
+        listItems=new ArrayList<String>();
         listItems.add("sky");
         listItems.add("Destiny");
         listItems.add("fire");
-        list1.setAdapter(new CustomList(getActivity(),listItems));
+        adapter=new CustomList(getActivity(),listItems);
+        list1.setAdapter(adapter);
         fab_open = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_close);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
@@ -66,8 +69,18 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         fab.setOnClickListener(this);
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
+        list1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(),roomActivity.class);
+                //intent.putExtra("INPUT_CHATNAME",listItems.get(position).toString());
+                //getActivity().setResult(Activity.RESULT_OK,intent);
+               // getActivity().finish();
+                startActivity(intent);
+            }
+        });
 
-        editsearch.addTextChangedListener(new TextWatcher() {
+        editsearch.addTextChangedListener(new TextWatcher() { //https://www.youtube.com/watch?v=c9yC8XGaSv4 출처
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -100,6 +113,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
 
 
 
+
         return view;
     }
 
@@ -125,9 +139,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         final Dialog Dialog = new Dialog(getActivity());
         final Dialog Dialog2=new Dialog(getActivity());
-        Dialog.setTitle("로그인 화면");
         Dialog.setContentView(R.layout.chatdialog);
-        Dialog2.setTitle("검색 화면");
         Dialog2.setContentView(R.layout.chatdialog2);
         Spinner spinner=(Spinner)Dialog.findViewById(R.id.spin);
         ArrayAdapter<CharSequence> adapter2=ArrayAdapter.createFromResource(getActivity(),R.array.people_count,android.R.layout.simple_spinner_item);
@@ -139,6 +151,8 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         //final EditText edit1=(EditText)Dialog2.findViewById(R.id.searchname);
         //Button searchconfirm=(Button)Dialog2.findViewById(R.id.confirm);
         //Button searchcancle=(Button)Dialog2.findViewById(R.id.serchcancle);
+        roomcre.setOnClickListener(this);
+        roomcan.setOnClickListener(this);
 
         int id = v.getId();
         switch (id) {
@@ -153,17 +167,19 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
                 roomcre.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (roomname.getText().toString().trim().length() > 0) {
-                            Toast.makeText(getActivity(),
-                                    "로그인 성공", Toast.LENGTH_LONG).show();
-                            str=roomname.getText().toString();
-
-                            Dialog.dismiss();
-                        } else {
-                            Toast.makeText(getActivity(),
-                                    "다시 입력하시오", Toast.LENGTH_LONG).show();
+                        switch (v.getId())
+                        {
+                            case R.id.roomcreate:
+                                String roomtext=roomname.getText().toString();
+                                if(roomtext.length()!=0){
+                                    listItems.add(roomtext);
+                                    roomname.setText("");
+                                    adapter.notifyDataSetChanged(); //변화된 것을 어뎁터에 알려라
+                                }
+                                break;
 
                         }
+                        Dialog.dismiss();
 
                     }
                 });
@@ -209,7 +225,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
             TextView year = (TextView) rowView.findViewById(R.id.releaseYear);
 
             title.setText(arrString.get(postion));
-            imageView.setImageResource(images[postion]);
+            //imageView.setImageResource(images[postion]);
             rating.setText("9.0" + postion);
             year.setText("4:00PM");
 

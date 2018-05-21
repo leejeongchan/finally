@@ -6,4 +6,5 @@
     <color name="fabPressed">#6EB5F7</color>
     <color name="fabRipple">#AED6FC</color>
     <color name="colorAccent">#00DFFC</color>
+    <color name="colorPink">#FF4081</color>
 </resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+            <ImageView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/backbutton"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowback"
+
+                />
+            <TextView
+                android:layout_marginStart="8dp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:text="이정찬"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/backbutton"
+                android:layout_alignParentTop="true"
+                android:textSize="17sp"
+
+                android:id="@+id/chatRoomFriendName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/menuChatRoomImgView"
+                android:contentDescription="@string/app_name"
+                android:layout_marginEnd="8dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/menublack"
+                android:layout_alignBottom="@id/backbutton"
+                android:scaleType="centerInside"
+                android:layout_width="36dp"
+                android:layout_height="36dp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:background="#ffffff"
+                android:id="@+id/chatRoomListView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_below="@id/backbutton"/>
+
+            <ImageView
+                android:id="@+id/addPhotoImgView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerInside"
+                android:layout_toLeftOf="@id/msgEditText"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/heartbutton"/>
+            <EditText
+                android:labelFor="@+id/msgEditText"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/msgEditText"
+                android:layout_centerInParent="true"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:text="Send"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="4dp"
+                android:background="#ffffff"
+                android:id="@+id/sendMsgBtn"
+                android:layout_toRightOf="@id/msgEditText"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content" />
+</RelativeLayout>

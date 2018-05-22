@@ -23,23 +23,6 @@ public class MainActivity extends FragmentActivity {
         tabHost.addTab(tabHost.newTabSpec("tab02").setIndicator("Chat"),FragmentChat.class,null);
         tabHost.addTab(tabHost.newTabSpec("tab03").setIndicator("Mypage"),FragmentPost.class,null);
         tabHost.addTab(tabHost.newTabSpec("tab04").setIndicator("more"),FragmentMore.class,null);
-        /*if(findViewById(R.id.fragment_container)!=null)
-        {
-            if(savedInstanceState!=null)
-            {
-                return ;
-
-            }
-            FragmentHome firstFragment=new FragmentHome();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,firstFragment).commit();
-        }*/
-
-
-
-
-
-
-
 
 
 

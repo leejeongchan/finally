@@ -43,11 +43,12 @@
 
 
             <android.support.v7.widget.RecyclerView
-                android:background="#ffffff"
+                android:background="@color/colorPrimary"
                 android:id="@+id/chatRoomListView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_below="@id/backbutton"/>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/backbutton"
+                android:layout_above="@id/addPhotoImgView"/>
 
             <ImageView
                 android:id="@+id/addPhotoImgView"
@@ -62,7 +63,7 @@
                 android:layout_alignParentBottom="true"
                 android:id="@+id/msgEditText"
                 android:layout_centerInParent="true"
-                android:layout_width="280dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content" />
             <Button
                 android:text="Send"

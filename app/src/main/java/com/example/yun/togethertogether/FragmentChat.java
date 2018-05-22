@@ -114,8 +114,10 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
 
 
 
+
         return view;
     }
+
 
 
     public void anim() {
@@ -148,9 +150,6 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         Button roomcre = (Button) Dialog.findViewById(R.id.roomcreate);
         Button roomcan = (Button) Dialog.findViewById(R.id.roomcancle);
         final EditText roomname = (EditText) Dialog.findViewById(R.id.roomname);
-        //final EditText edit1=(EditText)Dialog2.findViewById(R.id.searchname);
-        //Button searchconfirm=(Button)Dialog2.findViewById(R.id.confirm);
-        //Button searchcancle=(Button)Dialog2.findViewById(R.id.serchcancle);
         roomcre.setOnClickListener(this);
         roomcan.setOnClickListener(this);
 
@@ -174,6 +173,8 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
                                 if(roomtext.length()!=0){
                                     listItems.add(roomtext);
                                     roomname.setText("");
+                                    adapter=new CustomList(getActivity(),listItems);
+                                    list1.setAdapter(adapter);
                                     adapter.notifyDataSetChanged(); //변화된 것을 어뎁터에 알려라
                                 }
                                 break;

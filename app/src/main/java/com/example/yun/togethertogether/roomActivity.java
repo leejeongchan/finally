@@ -6,12 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -50,6 +56,7 @@ public class roomActivity extends AppCompatActivity{
                 finish();
             }
         });
+
         mRecyclerView = (RecyclerView) findViewById(R.id.chatRoomListView);
 
         // use this setting to improve performance if you know that changes
@@ -63,7 +70,26 @@ public class roomActivity extends AppCompatActivity{
         // specify an adapter (see also next example)
         mAdapter = new MyAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
+
     }
+
+    public void onMenuClick(View v)
+    {
+        PopupMenu popup=new PopupMenu(this,v);
+        popup.getMenuInflater().inflate(R.menu.chatmenu,popup.getMenu());
+        popup.setOnMenuItemClickListener(
+                new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(getApplicationContext(),"기능 구현중..",Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                }
+        );
+        popup.show();
+    }
+
+
 
 
 

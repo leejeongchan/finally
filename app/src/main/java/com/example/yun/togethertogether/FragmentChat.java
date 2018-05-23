@@ -45,9 +45,11 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
     private Boolean isFabOpen = false;
     public String str;
     ArrayList<String> listItems;
+    ArrayList<String> peoplecount;// 스피너 인원수
     String[] titles = {"sky", "destiny", "bebe"};
     Integer[] images = {R.drawable.house, R.drawable.lovehouse, R.drawable.love_sentence};
     CustomList adapter;
+    CustomList adapter2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,9 +57,10 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
 
         list1 = (ListView) view.findViewById(R.id.list);
         listItems=new ArrayList<String>();
-        listItems.add("sky");
-        listItems.add("Destiny");
-        listItems.add("fire");
+        peoplecount=new ArrayList<String>();
+       //listItems.add("sky");
+        //listItems.add("Destiny");
+        //listItems.add("fire");
         adapter=new CustomList(getActivity(),listItems);
         list1.setAdapter(adapter);
         fab_open = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_open);
@@ -143,13 +146,14 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         final Dialog Dialog2=new Dialog(getActivity());
         Dialog.setContentView(R.layout.chatdialog);
         Dialog2.setContentView(R.layout.chatdialog2);
-        Spinner spinner=(Spinner)Dialog.findViewById(R.id.spin);
+        final Spinner spinner=(Spinner)Dialog.findViewById(R.id.spin);
         ArrayAdapter<CharSequence> adapter2=ArrayAdapter.createFromResource(getActivity(),R.array.people_count,android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter2);
         Button roomcre = (Button) Dialog.findViewById(R.id.roomcreate);
         Button roomcan = (Button) Dialog.findViewById(R.id.roomcancle);
         final EditText roomname = (EditText) Dialog.findViewById(R.id.roomname);
+
         roomcre.setOnClickListener(this);
         roomcan.setOnClickListener(this);
 
@@ -170,10 +174,12 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
                         {
                             case R.id.roomcreate:
                                 String roomtext=roomname.getText().toString();
+                                peoplecount.add(spinner.getSelectedItem().toString());
                                 if(roomtext.length()!=0){
                                     listItems.add(roomtext);
                                     roomname.setText("");
-                                    adapter=new CustomList(getActivity(),listItems);
+
+                                    //adapter=new CustomList(getActivity(),listItems);
                                     list1.setAdapter(adapter);
                                     adapter.notifyDataSetChanged(); //변화된 것을 어뎁터에 알려라
                                 }
@@ -228,8 +234,11 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
             title.setText(arrString.get(postion));
             //imageView.setImageResource(images[postion]);
             rating.setText("9.0" + postion);
-            year.setText("4:00PM");
-
+            if(peoplecount.get(postion).toString().equals("6")) {
+                year.setText("3vs3");
+            }
+            else
+                year.setText("4vs4");
             colorpos = postion % 2; //2로나눈 나머지를 colorpos에 저장해서
             if (colorpos == 0) //2로나눈 나머지가 0이면
                 rowView.setBackgroundColor(Color.WHITE);

@@ -47,7 +47,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
     ArrayList<String> listItems;
     ArrayList<String> peoplecount;// 스피너 인원수
     String[] titles = {"sky", "destiny", "bebe"};
-    Integer[] images = {R.drawable.house, R.drawable.lovehouse, R.drawable.love_sentence};
+    Integer[] images = { R.drawable.lovehouse};
     CustomList adapter;
     CustomList adapter2;
     @Override
@@ -92,11 +92,11 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 ArrayList<String> temp=new ArrayList<String>();
-                int textlength=editsearch.getText().length();
+                int textlength=editsearch.getText().length(); //검색 입력된 것의 길이
                 temp.clear();
                 for(int i=0; i<listItems.size(); i++)
                 {
-                    if(textlength<=listItems.get(i).length())
+                    if(textlength<=listItems.get(i).length()) //검색된 아이템의 길이가 listitems의 길이보다 작거나 같으면
                     {
                         if(editsearch.getText().toString().equalsIgnoreCase((String)listItems.get(i).subSequence(0,textlength)))
                         {
@@ -232,7 +232,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
             TextView year = (TextView) rowView.findViewById(R.id.releaseYear);
 
             title.setText(arrString.get(postion));
-            //imageView.setImageResource(images[postion]);
+            imageView.setImageResource(images[0]);
             rating.setText("9.0" + postion);
             if(peoplecount.get(postion).toString().equals("6")) {
                 year.setText("3vs3");

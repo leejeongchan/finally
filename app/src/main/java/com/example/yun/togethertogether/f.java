@@ -96,19 +96,5 @@ public class f extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
 }

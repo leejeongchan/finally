@@ -1,12 +1,18 @@
 package com.example.yun.togethertogether;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends FragmentActivity {
+
+public class MainActivity extends FragmentActivity  {
     FragmentTabHost tabHost;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +34,5 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-
-
-
-
-
-
 }
-
-
-
 

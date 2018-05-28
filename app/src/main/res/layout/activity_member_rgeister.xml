@@ -125,6 +125,7 @@
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:textSize="13dp"
+                     android:onClick="sendNum"
                      android:text="인증번호 전송" />
              </TableRow>
         </TableLayout>

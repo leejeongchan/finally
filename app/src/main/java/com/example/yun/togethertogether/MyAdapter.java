@@ -15,6 +15,9 @@ import java.util.List;
 public  class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private String[] mDataset;
     List<chat> mchat;
+    String stEmail;
+    int right=1;
+    int left=2;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -22,24 +25,47 @@ public  class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView mTextView;
-        public ViewHolder(View itemView) {
+        public ViewHolder (View itemView) {
             super(itemView);
             mTextView = (TextView)itemView.findViewById(R.id.TextView);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<chat> mchat) {
+    public MyAdapter(List<chat> mchat,String email) {
         this.mchat =  mchat;
+        this.stEmail=email;
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mchat.get(position).getEmail().equals(stEmail))
+        {
+            return right;
+        }
+        else
+            return left;
+
     }
 
     // Create new views (invoked by the layout manager)
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
-        // create a new view
-        View v =  LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
+        View v;
+        if(viewType==right)
+        {
+            // create a new view
+             v =  LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.right_text_view, parent, false);
+        }
+        else
+        {
+            // create a new view
+            v =  LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.my_text_view, parent, false);
+        }
 
 
         ViewHolder vh = new ViewHolder(v);

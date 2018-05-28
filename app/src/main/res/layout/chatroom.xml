@@ -30,7 +30,8 @@
                 android:id="@+id/chatRoomFriendName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <ImageView
+
+            <ImageButton
                 android:id="@+id/menuChatRoomImgView"
                 android:contentDescription="@string/app_name"
                 android:layout_marginEnd="8dp"
@@ -40,7 +41,7 @@
                 android:scaleType="centerInside"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:onClick="onMenuClick"/>
+                />
 
 
             <android.support.v7.widget.RecyclerView
@@ -75,4 +76,15 @@
                 android:layout_toRightOf="@id/msgEditText"
                 android:layout_width="72dp"
                 android:layout_height="wrap_content" />
+        <FrameLayout
+            android:layout_below="@id/chatRoomFriendName"
+             android:id="@+id/fragment_container2"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+        />
+
+
+
 </RelativeLayout>
+
+

@@ -6,7 +6,7 @@ package com.example.yun.togethertogether;
 
 public class chat {
 
-    public String email;
+    public String id;
 
     public String text;
 
@@ -20,11 +20,11 @@ public class chat {
     }
 
     public String getEmail() {
-        return email;
+        return id;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.id = email;
     }
 
     public String getText() {

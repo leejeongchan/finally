@@ -31,6 +31,7 @@
         <activity android:name=".tabActivity2" />
         <activity android:name=".tabActivity3"></activity>
         <activity android:name=".roomActivity"></activity>
+        <activity android:name=".f"></activity>
 
     </application>
 

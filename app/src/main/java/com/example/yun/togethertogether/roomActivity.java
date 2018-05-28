@@ -3,6 +3,10 @@ package com.example.yun.togethertogether;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -42,12 +47,13 @@ import java.util.List;
  * Created by JEUNGCHAN on 2018-05-20.
  */
 
-public class roomActivity extends AppCompatActivity{
+public class roomActivity extends AppCompatActivity  {
     static final int GET_STRING=1;
+
     String str;
     ImageView img;
     TextView txv;
-    ImageView img2;
+    ImageButton buttonmenu;
     RecyclerView recyclerView;
     ImageView img3;
     EditText ed;
@@ -64,9 +70,10 @@ public class roomActivity extends AppCompatActivity{
     {
         super.onCreate(icicle);
         setContentView(R.layout.chatroom);
+
         img=(ImageView)findViewById(R.id.backbutton);
         txv=(TextView)findViewById(R.id.chatRoomFriendName);
-        img2=(ImageView)findViewById(R.id.menuChatRoomImgView);
+        buttonmenu=(ImageButton)findViewById(R.id.menuChatRoomImgView);
         img3=(ImageView)findViewById(R.id.addPhotoImgView);
         ed=(EditText)findViewById(R.id.msgEditText);
         send=(Button)findViewById(R.id.sendMsgBtn);
@@ -79,16 +86,16 @@ public class roomActivity extends AppCompatActivity{
 
 
 
-
-
         database = FirebaseDatabase.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
 
             email = user.getEmail();
+            txv.setText(email);
 
         }
+
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +124,20 @@ public class roomActivity extends AppCompatActivity{
                 }
             }
         });
-
+        buttonmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent come=new Intent(roomActivity.this,f.class);
+                //Fragment fr=null;
+               // fr=new Friendfrag();
+               // FragmentManager fm=getSupportFragmentManager();
+               // FragmentTransaction fragmentTransaction=fm.beginTransaction();
+               // fragmentTransaction.replace(R.id.fragment_container2,fr);
+               // fragmentTransaction.addToBackStack(null);
+               // fragmentTransaction.commit();
+                startActivity(come);
+            }
+        });
         mRecyclerView = (RecyclerView) findViewById(R.id.chatRoomListView);
 
         // use this setting to improve performance if you know that changes
@@ -129,7 +149,7 @@ public class roomActivity extends AppCompatActivity{
         mRecyclerView.setLayoutManager(mLayoutManager);
         mchat=new ArrayList<>();
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(mchat);
+        mAdapter = new MyAdapter(mchat,email);
         mRecyclerView.setAdapter(mAdapter);
 
         DatabaseReference myRef = database.getReference("chat");
@@ -166,23 +186,19 @@ public class roomActivity extends AppCompatActivity{
             }
         });
 
+
+
+
+
+
+
+
     }
 
-    public void onMenuClick(View v)
-    {
-        PopupMenu popup=new PopupMenu(this,v);
-        popup.getMenuInflater().inflate(R.menu.chatmenu,popup.getMenu());
-        popup.setOnMenuItemClickListener(
-                new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(getApplicationContext(),"기능 구현중..",Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                }
-        );
-        popup.show();
-    }
+
+
+
+
 
 
 

@@ -4,84 +4,160 @@
     android:layout_height="match_parent"
     android:id="@+id/tab1"
     tools:context="com.example.yun.togethertogether.FragmentHome">
-    <ImageView
-        android:id="@+id/love"
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="273dp"
-        android:src="@drawable/love_sentence" />
+        android:layout_height="200dp"
+        android:scaleType="fitXY">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/slide_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="240dp">-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/lovebar01"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginLeft="148dp"-->
+        <!--android:paddingBottom="14dp"-->
+        <!--android:src="@drawable/love_convertbar" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/lovebar02"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_toRightOf="@id/lovebar01"-->
+        <!--android:paddingBottom="14dp"-->
+        <!--android:src="@drawable/love_convertbar" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/lovebar03"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_toRightOf="@id/lovebar02"-->
+        <!--android:paddingBottom="14dp"-->
+        <!--android:src="@drawable/love_convertbar" />-->
+
+        <!--<ImageView-->
+        <!--android:id="@+id/lovebar04"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_toRightOf="@id/lovebar03"-->
+        <!--android:paddingBottom="14dp"-->
+        <!--android:src="@drawable/love_convertbar" />-->
+        <!--</RelativeLayout>-->
+    </FrameLayout>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="13dp"
+        android:layout_below="@+id/frameLayout2"
+        android:layout_marginLeft="22dp"
         android:text="내 프로필"
-        android:textStyle="bold"
-        android:id="@+id/textView" />
+        android:textSize="10dp"
+        android:textStyle="bold" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/profile"
-        android:id="@+id/imageView" />
+        android:id="@+id/frameLayout">
 
-    <ImageView
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:src="@drawable/profile_bar"
-        android:id="@+id/imageView3" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="299dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="85dp">
+                <View
+                    android:id="@+id/imageView3"
+                    android:layout_width="267dp"
+                    android:layout_height="61dp"
+                    android:layout_alignBottom="@+id/imageView"
+                    android:layout_alignParentEnd="true"
+
+                    android:background="#50acd5ef"
+                    android:src="@drawable/profile_bar" />
+
+                <TextView
+                    android:id="@+id/textline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="#20666666"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="2dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/normal_imgae"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/profile_info"
+            android:layout_width="390dp"
+            android:layout_height="60dp"
+            android:layout_alignBottom="@+id/imageView3"
+            android:layout_alignParentStart="true"
+            android:background="#00FFFFFF" />
+
+    </FrameLayout>
+
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView3"
-        android:layout_toStartOf="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/frameLayout"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
         android:text="미팅 추천장소"
-        android:textStyle="bold"
-        android:id="@+id/textView2" />
+        android:textStyle="bold" />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="11dp"
-        android:layout_toStartOf="@+id/imageView3"
-        android:src="@drawable/chuchen"
-        android:id="@+id/imageView4" />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignEnd="@+id/imageView3"
-        android:layout_alignTop="@+id/imageView6"
-        android:src="@drawable/chuchen" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="310dp">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignTop="@+id/imageView5"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView5"
-        android:src="@drawable/chuchen"
-        android:id="@+id/imageView6" />
+        <GridView
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="90dp"
+            android:numColumns="2"
+            android:verticalSpacing="0dp"
+            android:horizontalSpacing="0dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center">
+        </GridView>
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignStart="@+id/imageView3"
-        android:layout_alignTop="@+id/imageView4"
-        android:src="@drawable/chuchen" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

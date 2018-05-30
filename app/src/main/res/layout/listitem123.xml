@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/IDID"
+                android:text="ID : "
+                android:layout_marginLeft="20dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/User_ID"
+                android:layout_toRightOf="@+id/IDID"
+                android:layout_width="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:id="@+id/this_time"
+                android:textSize="15dp"
+                android:layout_width="50dp"
+                android:layout_height="25dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginRight="50dp"
+            android:id="@+id/Chatting"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="20dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

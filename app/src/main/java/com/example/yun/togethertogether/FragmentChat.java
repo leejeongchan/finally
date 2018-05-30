@@ -169,6 +169,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
             //intent.putExtra("INPUT_CHATNAME",listItems.get(position).toString());
             //getActivity().setResult(Activity.RESULT_OK,intent);
             // getActivity().finish();
+
             startActivity(intent,activityOptions.toBundle());
         }
     }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="9dp"
+        android:text="상태메시지"/>
+
+    <EditText
+        android:id="@+id/message1"
+        android:inputType="text"
+        android:privateImeOptions="defaultInputmode=korean"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:colorControlNormal="#FFFFD2F7"
+        android:colorControlActivated="#FFFFD2F7"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cancelbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/messagebutton"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/cancelbutton"
+            android:layout_alignLeft="@id/cancelbutton"
+            android:layout_alignRight="@id/cancelbutton"
+            android:layout_alignTop="@id/cancelbutton"
+            android:text="취소"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/sendbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/cancelbutton"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/messagebutton"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/sendbutton"
+            android:layout_alignLeft="@id/sendbutton"
+            android:layout_alignRight="@id/sendbutton"
+            android:layout_alignTop="@id/sendbutton"
+            android:text="전송"
+            android:textColor="#000000"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

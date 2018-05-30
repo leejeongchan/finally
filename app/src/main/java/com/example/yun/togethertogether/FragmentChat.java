@@ -1,6 +1,7 @@
 package com.example.yun.togethertogether;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -12,6 +13,8 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -61,12 +64,20 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
     CustomList adapter2;
     View view;
     int selectedpos=-1;
+    Parcelable depoListInstance;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_chat, container, false);
+        if(savedInstanceState!=null)
+        {
+            depoListInstance = savedInstanceState.getParcelable("instance");
+            list1.onRestoreInstanceState(depoListInstance);
+        }
+
 
         list1 = (ListView) view.findViewById(R.id.list);
         listItems=new ArrayList<String>();
@@ -90,6 +101,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         list1.setOnItemClickListener(new ListViewItemClickListener());
 
         list1.setOnItemLongClickListener(new ListViewItemLongClickListener());
+
 
 
 
@@ -131,6 +143,20 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
 
         return view;
     }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+    @Override
+    public void onSaveInstanceState(Bundle saved)
+    {
+        super.onSaveInstanceState(saved);
+        saved.putParcelable("instance",list1.onSaveInstanceState());
+
+    }
+
+
     protected class ListViewItemClickListener implements AdapterView.OnItemClickListener
     {
 
@@ -139,10 +165,11 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
         {
 
             Intent intent = new Intent(getActivity(),roomActivity.class);
+            ActivityOptions activityOptions=ActivityOptions.makeCustomAnimation(getContext(),R.anim.fromright,R.anim.toleft);
             //intent.putExtra("INPUT_CHATNAME",listItems.get(position).toString());
             //getActivity().setResult(Activity.RESULT_OK,intent);
             // getActivity().finish();
-            startActivity(intent);
+            startActivity(intent,activityOptions.toBundle());
         }
     }
 
@@ -240,8 +267,8 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
                 break;
             case R.id.fab1:
                 anim();
-                Intent lovesite =new Intent(Intent.ACTION_VIEW, Uri.parse("https://blog.naver.com/1rosa1/221231296890"));
-                startActivity(lovesite);
+                Intent people =new Intent(getActivity(),f.class);
+                startActivity(people);
                 break;
             case R.id.fab2:
                 anim();
@@ -314,7 +341,7 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
 
             title.setText(arrString.get(postion));
             imageView.setImageResource(images[0]);
-            rating.setText("9.0" + postion);
+            rating.setText( 1+ postion+"째 방");
             if(peoplecount.get(postion).toString().equals("6")) {
                 year.setText("3vs3");
             }
@@ -335,5 +362,4 @@ public class FragmentChat extends Fragment implements View.OnClickListener {
 
     }
 }
-
 

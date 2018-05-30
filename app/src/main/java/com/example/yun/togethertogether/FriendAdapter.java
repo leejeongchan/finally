@@ -1,9 +1,12 @@
 package com.example.yun.togethertogether;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,17 +21,19 @@ public  class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolde
     List<Friend> mFriend;
     String em;
 
+
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView tvEmail;
-
+        public Button invbt;
         public ViewHolder(View itemView) {
             super(itemView);
 
             tvEmail = (TextView)itemView.findViewById(R.id.tvUseremail);
+            invbt=(Button)itemView.findViewById(R.id.invitebutton);
         }
     }
 
@@ -46,7 +51,7 @@ public  class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolde
     public FriendAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                        int viewType) {
         View v=  LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.list_friend, parent, false);
+                .inflate(R.layout.list_friend, parent, false);
 
 
         ViewHolder vh = new ViewHolder(v);
@@ -55,11 +60,21 @@ public  class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolde
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.tvEmail.setText(mFriend.get(position).getId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(),roomActivity.class);
+                in.putExtra("destination",mFriend.get(position).getId());
 
+                ActivityOptions activityOptions=ActivityOptions.makeCustomAnimation(v.getContext(),R.anim.fromright,R.anim.toleft);
+
+                v.getContext().startActivity(in,activityOptions.toBundle());
+            }
+        });
 
     }
 

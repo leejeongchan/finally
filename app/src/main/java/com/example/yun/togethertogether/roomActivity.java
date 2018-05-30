@@ -60,6 +60,7 @@ public class roomActivity extends AppCompatActivity  {
     Button send;
     String email;
     List<chat> mchat;
+    private String destionation;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -84,7 +85,7 @@ public class roomActivity extends AppCompatActivity  {
             }
         });
 
-
+        destionation=getIntent().getStringExtra("destination");
 
         database = FirebaseDatabase.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -92,10 +93,12 @@ public class roomActivity extends AppCompatActivity  {
             // Name, email address, and profile photo Url
 
             email = user.getEmail();
-            txv.setText(email);
+
 
         }
+        //상대방 이메일을 받아와서 destination에 넣기
 
+        txv.setText(destionation);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,12 +132,12 @@ public class roomActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 Intent come=new Intent(roomActivity.this,f.class);
                 //Fragment fr=null;
-               // fr=new Friendfrag();
-               // FragmentManager fm=getSupportFragmentManager();
-               // FragmentTransaction fragmentTransaction=fm.beginTransaction();
-               // fragmentTransaction.replace(R.id.fragment_container2,fr);
-               // fragmentTransaction.addToBackStack(null);
-               // fragmentTransaction.commit();
+                // fr=new Friendfrag();
+                // FragmentManager fm=getSupportFragmentManager();
+                // FragmentTransaction fragmentTransaction=fm.beginTransaction();
+                // fragmentTransaction.replace(R.id.fragment_container2,fr);
+                // fragmentTransaction.addToBackStack(null);
+                // fragmentTransaction.commit();
                 startActivity(come);
             }
         });

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TogetherTogether.iml" filepath="$PROJECT_DIR$/TogetherTogether.iml" />
+      <module fileurl="file://C:\tt\TogetherTogether\TogetherTogether.iml" filepath="C:\tt\TogetherTogether\TogetherTogether.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\tt\TogetherTogether\app\app.iml" filepath="C:\tt\TogetherTogether\app\app.iml" />
     </modules>
   </component>
 </project>

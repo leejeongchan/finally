@@ -64,11 +64,14 @@ public  class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolde
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.tvEmail.setText(mFriend.get(position).getId());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.invbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String stFriendId=mFriend.get(position).getKey();
                 Intent in = new Intent(v.getContext(),roomActivity.class);
-                in.putExtra("destination",mFriend.get(position).getId());
+                in.putExtra("destination",stFriendId);
+
+
 
                 ActivityOptions activityOptions=ActivityOptions.makeCustomAnimation(v.getContext(),R.anim.fromright,R.anim.toleft);
 

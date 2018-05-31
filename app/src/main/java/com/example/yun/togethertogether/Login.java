@@ -94,17 +94,23 @@ public class Login extends BaseActivity implements
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            //이메일과 uid를 받아서 데이터베이스에 저장함
+                            //사용자 목록
                             String em=user.getEmail();
+                            String uid=user.getUid();
                             Date c = Calendar.getInstance().getTime();
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                             String formattedDate = df.format(c);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("Users").child(formattedDate);
+                            DatabaseReference myRef = database.getReference("Users");
                             Hashtable<String, String> Friend
                                     = new Hashtable<String, String>();
                             Friend.put("id",em);
-                            myRef.setValue(Friend);
+                            Friend.put("key",uid);
+
+
+                            myRef.child(uid).setValue(Friend);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());

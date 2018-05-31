@@ -8,6 +8,7 @@ public class Friend {
 
     public String tvEmail;
 
+    public String key;
 
 
     public Friend() {
@@ -26,9 +27,11 @@ public class Friend {
         this.tvEmail = tvEmail;
     }
 
+    public String getKey() {
+        return key;
+    }
 
-
-
-
-
+    public void setKey(String key) {
+        this.key = key;
+    }
 }

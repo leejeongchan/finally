@@ -25,6 +25,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.yun.togethertogether.model.chatmodel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -85,8 +86,8 @@ public class roomActivity extends AppCompatActivity  {
             }
         });
 
-        destionation=getIntent().getStringExtra("destination");
-
+        destionation=getIntent().getStringExtra("destination");//상대방 uid 받아오기
+        //상대방 이메일을 받아와서 destination에 넣기
         database = FirebaseDatabase.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -94,15 +95,21 @@ public class roomActivity extends AppCompatActivity  {
 
             email = user.getEmail();
 
-
         }
-        //상대방 이메일을 받아와서 destination에 넣기
+
+
+
 
         txv.setText(destionation);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //chatmodel chmod=new chatmodel();
+                //채팅방 데이터베이스
+                //chmod.uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                //chmod.destinationUid=destionation;
+                //FirebaseDatabase.getInstance().getReference().child("chatrooms").push().setValue(chmod);
                 String sendText=ed.getText().toString();
                 if(sendText.equals("") || sendText.isEmpty())
                 {
@@ -115,7 +122,7 @@ public class roomActivity extends AppCompatActivity  {
                     String formattedDate = df.format(c);
 
 
-                    DatabaseReference myRef = database.getReference("chat").child(formattedDate);
+                    DatabaseReference myRef = database.getReference("Users").child(destionation).child("chat").child(formattedDate);
                     Hashtable<String, String> chat
                             = new Hashtable<String, String>();
                     chat.put("email",email);
@@ -155,7 +162,7 @@ public class roomActivity extends AppCompatActivity  {
         mAdapter = new MyAdapter(mchat,email);
         mRecyclerView.setAdapter(mAdapter);
 
-        DatabaseReference myRef = database.getReference("chat");
+        DatabaseReference myRef = database.getReference("Users").child(destionation).child("chat");
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
